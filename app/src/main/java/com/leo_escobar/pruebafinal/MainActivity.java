@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -121,6 +122,20 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+        //validación de que el token no sea nulo o vacío
+        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+        String token = sharedPref.getString("token", "");
+
+
+        Toast.makeText(this,"Token_preferences"+ token, Toast.LENGTH_SHORT).show();
+
+        //obtener el token del putExtra del login
+        Intent intent = getIntent();
+        String tokenRecibido = intent.getStringExtra("token");
+        Toast.makeText(this, tokenRecibido, Toast.LENGTH_SHORT).show();
+
     }
 
     private void filterList(String text) {

@@ -72,6 +72,8 @@
                 app:layout_constraintStart_toStartOf="@+id/editTextCorreo"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
 
+
+
             <EditText
                 android:id="@+id/editTextEstado"
                 android:layout_width="0dp"
@@ -82,6 +84,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/editTextFechaCreacion"
                 app:layout_constraintStart_toStartOf="@+id/editTextFechaCreacion"
                 app:layout_constraintTop_toBottomOf="@+id/editTextFechaCreacion" />
+
 
             <EditText
                 android:id="@+id/editTextMunicipio"

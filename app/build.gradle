@@ -54,6 +54,7 @@ dependencies {
     implementation files('C:/Users/leo_f/AndroidStudioProjects/PruebaFinal/app/libs/HERE-sdk.aar')
 
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     annotationProcessor "androidx.room:room-compiler:2.2.6"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
