@@ -49,5 +49,6 @@
     <string name="search">Buscar</string>
     <string name="search_hint">Buscar aquí</string>
     <string name="action_search">Buscar</string>
+    <string name="estado_prompt">Seleccione un estado</string>
 
 </resources>

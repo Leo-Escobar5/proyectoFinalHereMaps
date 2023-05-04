@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.leo_escobar.pruebafinal.R;
+import com.leo_escobar.pruebafinal.data.Client;
 import com.leo_escobar.pruebafinal.data.Cliente;
 
 import java.util.ArrayList;
@@ -29,19 +30,19 @@ import java.util.Locale;
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHolderDatos> implements Filterable {
 
     private final int tamañoOriginal;
-    ArrayList<Cliente> clientes;
+    ArrayList<Client> clients;
     Context context;
     private AlertDialog alertDialog;
-    private ArrayList<Cliente> clientesOriginales;
-    private ArrayList<Cliente> clientesFiltrados;
+    private ArrayList<Client> clientesOriginales;
+    private ArrayList<Client> clientesFiltrados;
 
-    public ClienteAdapter(ArrayList<Cliente> clientes, Context context) {
+    public ClienteAdapter(ArrayList<Client> clients, Context context) {
         Log.i("ClienteAdapter", "estoy en el constructor");
-        this.clientes = clientes;
+        this.clients = clients;
         this.context = context;
-        this.clientesOriginales = new ArrayList<>(clientes);
-        this.clientesFiltrados = new ArrayList<>(clientes);
-        this.tamañoOriginal = clientes.size();
+        this.clientesOriginales = new ArrayList<>(clients);
+        this.clientesFiltrados = new ArrayList<>(clients);
+        this.tamañoOriginal = clients.size();
 
     }
 
@@ -50,10 +51,10 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
 
     public interface OnItemClickListener{
-        void onItemClick(Cliente cliente);
+        void onItemClick(Client client);
     }
     public interface OnDeleteClickListener{
-        void onDeleteClick(Cliente cliente, int position);
+        void onDeleteClick(Client client, int position);
     }
     private OnDeleteClickListener onDeleteClickListener;
     public void setOnDeleteClickListener(OnDeleteClickListener listener) {
@@ -65,7 +66,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
     public void onItemClick(int position){
         if (onItemClickListener != null) {
-            onItemClickListener.onItemClick(clientes.get(position));
+            onItemClickListener.onItemClick(clients.get(position));
         }
     }
 
@@ -85,18 +86,18 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         //log indicando que funciona el onBindViewHolder
         Log.i("ClienteAdapter", "estoy en el onBindViewHolder");
-        Cliente cliente = clientesFiltrados.get(position);
+        Client client = clientesFiltrados.get(position);
 
-        holder.textViewNombres.setText(cliente.getNombres());
-        holder.textViewTelefono.setText(cliente.getTelefono());
-        holder.textViewCorreo.setText(cliente.getCorreo());
-        holder.textViewDireccion.setText(cliente.getEstado() + ", " + cliente.getMunicipio() + ", " + cliente.getCalle() + ", " + cliente.getColonia());
+        holder.textViewNombres.setText(client.getRazon_social());
+        holder.textViewTelefono.setText(client.getTelefono());
+        holder.textViewCorreo.setText(client.getCorreo());
+        holder.textViewDireccion.setText(client.getEstado_id() + ", " + client.getCiudad_id() + ", " + client.getCalle() + ", " + client.getColonia());
 
 
-    holder.textViewNombres.setText(cliente.getNombres());
-    holder.textViewTelefono.setText(cliente.getTelefono());
-    holder.textViewCorreo.setText(cliente.getCorreo());
-    holder.textViewDireccion.setText(cliente.getEstado() + ", " + cliente.getMunicipio() + ", " + cliente.getCalle() + ", " + cliente.getColonia());
+        holder.textViewNombres.setText(client.getRazon_social());
+        holder.textViewTelefono.setText(client.getTelefono());
+        holder.textViewCorreo.setText(client.getCorreo());
+        holder.textViewDireccion.setText(client.getEstado_id() + ", " + client.getCiudad_id() + ", " + client.getCalle() + ", " + client.getColonia());
 
     }
 
@@ -104,7 +105,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
     public int getItemCount() {
 
         //log de tamaño de la lista
-        Log.i("ClienteAdapter", "Tamaño de la lista desde getItemCount : " + clientes.size());
+        Log.i("ClienteAdapter", "Tamaño de la lista desde getItemCount : " + clients.size());
 
         //log de tamaño de clientesFiltrados
         Log.i("ClienteAdapter", "Tamaño de clientesFiltrados desde getItemCount : " + clientesFiltrados.size());
@@ -113,7 +114,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
 
         //toast de prueba
-        Toast.makeText(context, "Tamaño de la lista desde getItemCount : " + clientes.size(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Tamaño de la lista desde getItemCount : " + clients.size(), Toast.LENGTH_SHORT).show();
         return clientesFiltrados.isEmpty() ? tamañoOriginal : clientesFiltrados.size();
 
 
@@ -131,7 +132,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 String query = constraint.toString().toLowerCase().trim();
-                ArrayList<Cliente> filteredList = new ArrayList<>();
+                ArrayList<Client> filteredList = new ArrayList<>();
 
                 if (query.isEmpty()) {
 
@@ -140,16 +141,16 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
                     //indicar el tamaño de clientesOriginales
                     Log.i("ClienteAdapter", "Tamaño de clientesOriginales: " + clientesOriginales.size());
                     //indicar el tamaño de clientes
-                    Log.i("ClienteAdapter", "Tamaño de clientes: " + clientes.size());
+                    Log.i("ClienteAdapter", "Tamaño de clientes: " + clients.size());
                     //llenar la lista con todos los clientes
-                    filteredList.addAll(clientes);
+                    filteredList.addAll(clients);
 
 
 
                 } else {
-                    for (Cliente cliente : clientes) {
-                        if (cliente.getNombres().toLowerCase().contains(query) || cliente.getApellidos().toLowerCase().contains(query) || cliente.getCorreo().toLowerCase().contains(query)) {
-                            filteredList.add(cliente);
+                    for (Client client : clients) {
+                        if (client.getRazon_social().toLowerCase().contains(query) || client.getTelefono().toLowerCase().contains(query) || client.getCorreo().toLowerCase().contains(query)) {
+                            filteredList.add(client);
                         }
                     }
                 }
@@ -162,7 +163,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                ArrayList<Cliente> filteredList = (ArrayList<Cliente>) results.values;
+                ArrayList<Client> filteredList = (ArrayList<Client>) results.values;
                 clientesFiltrados.clear();
                 clientesFiltrados.addAll(filteredList);
                 notifyDataSetChanged();
@@ -212,7 +213,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if(onDeleteClickListener != null)
-                                onDeleteClickListener.onDeleteClick(clientes.get(position), position);
+                                onDeleteClickListener.onDeleteClick(clients.get(position), position);
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -261,13 +262,13 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
     }
 
-    public void setItems(List<Cliente> items){
+    public void setItems(List<Client> items){
         //agregar los items a la lista
-        clientes.clear();
-        clientes.addAll(items);
+        clients.clear();
+        clients.addAll(items);
         //log de nombres de los clientes
-        for (Cliente cliente : clientes){
-            Log.d("Cliente", cliente.getNombres());
+        for (Client cliente : clients){
+            Log.d("Cliente", cliente.getRazon_social());
         }
         notifyDataSetChanged();
     }

@@ -1,6 +1,7 @@
 package com.leo_escobar.pruebafinal.data;
 
-public class Client {
+public class ClientInsert {
+
     private int cliente_id;
     private String razon_social;
     private String telefono;
@@ -8,16 +9,14 @@ public class Client {
     private String fecha_creacion;
     private String referencia;
     private int estado_id;
-    private String estado;
     private int ciudad_id;
-    private String ciudad;
     private String colonia;
     private String calle;
     private String cp;
     private double latitud;
     private double longitud;
 
-    public Client(int cliente_id, String razon_social, String telefono, String correo, String fecha_creacion, String referencia, int estado_id, String estado, int ciudad_id, String ciudad, String colonia, String calle, String cp, double latitud, double longitud) {
+    public ClientInsert(int cliente_id, String razon_social, String telefono, String correo, String fecha_creacion, String referencia, int estado_id, int ciudad_id, String colonia, String calle, String cp, double latitud, double longitud) {
         this.cliente_id = cliente_id;
         this.razon_social = razon_social;
         this.telefono = telefono;
@@ -25,9 +24,7 @@ public class Client {
         this.fecha_creacion = fecha_creacion;
         this.referencia = referencia;
         this.estado_id = estado_id;
-        this.estado = estado;
         this.ciudad_id = ciudad_id;
-        this.ciudad = ciudad;
         this.colonia = colonia;
         this.calle = calle;
         this.cp = cp;
@@ -36,25 +33,7 @@ public class Client {
     }
 
     //constructor sin el id
-    public Client(String razon_social, String telefono, String correo, String fecha_creacion, String referencia, int estado_id, String estado, int ciudad_id, String ciudad, String colonia, String calle, String cp, double latitud, double longitud) {
-        this.razon_social = razon_social;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.fecha_creacion = fecha_creacion;
-        this.referencia = referencia;
-        this.estado_id = estado_id;
-        this.estado = estado;
-        this.ciudad_id = ciudad_id;
-        this.ciudad = ciudad;
-        this.colonia = colonia;
-        this.calle = calle;
-        this.cp = cp;
-        this.latitud = latitud;
-        this.longitud = longitud;
-    }
-
-    //constructor sin el id y sin el estado y ciudad pero si con sus id
-    public Client(String razon_social, String telefono, String correo, String fecha_creacion, String referencia, int estado_id, int ciudad_id, String colonia, String calle, String cp, double latitud, double longitud) {
+    public ClientInsert(String razon_social, String telefono, String correo, String fecha_creacion, String referencia, int estado_id, int ciudad_id, String colonia, String calle, String cp, double latitud, double longitud) {
         this.razon_social = razon_social;
         this.telefono = telefono;
         this.correo = correo;
@@ -125,28 +104,12 @@ public class Client {
         this.estado_id = estado_id;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public int getCiudad_id() {
         return ciudad_id;
     }
 
     public void setCiudad_id(int ciudad_id) {
         this.ciudad_id = ciudad_id;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
     }
 
     public String getColonia() {
@@ -191,7 +154,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "ClientInsert{" +
                 "cliente_id=" + cliente_id +
                 ", razon_social='" + razon_social + '\'' +
                 ", telefono='" + telefono + '\'' +
@@ -199,9 +162,7 @@ public class Client {
                 ", fecha_creacion='" + fecha_creacion + '\'' +
                 ", referencia='" + referencia + '\'' +
                 ", estado_id=" + estado_id +
-                ", estado='" + estado + '\'' +
                 ", ciudad_id=" + ciudad_id +
-                ", ciudad='" + ciudad + '\'' +
                 ", colonia='" + colonia + '\'' +
                 ", calle='" + calle + '\'' +
                 ", cp='" + cp + '\'' +

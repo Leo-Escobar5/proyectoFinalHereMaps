@@ -15,7 +15,29 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".CrearCliente">
+            android:background="@color/white"
+            tools:context=".editarCliente">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/AppBarLayoutStyle">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/light_blue"
+                    android:elevation="4dp"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:logo="@drawable/logo_itsmarts"
+                    app:titleTextColor="@color/black"
+                    app:contentInsetStart="65dp" />
+
+
+
+            </com.google.android.material.appbar.AppBarLayout>
 
             <EditText
                 android:id="@+id/editTextNombre"
@@ -28,16 +50,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textViewTitulo"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
 
-            <EditText
-                android:id="@+id/editTextApellidos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Apellidos"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/editTextNombre"
-                app:layout_constraintStart_toStartOf="@+id/editTextNombre"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+
 
             <EditText
                 android:id="@+id/editTextTelefono"
@@ -46,9 +59,9 @@
                 android:layout_marginTop="16dp"
                 android:hint="Teléfono"
                 android:inputType="phone"
-                app:layout_constraintEnd_toEndOf="@+id/editTextApellidos"
-                app:layout_constraintStart_toStartOf="@+id/editTextApellidos"
-                app:layout_constraintTop_toBottomOf="@+id/editTextApellidos" />
+                app:layout_constraintEnd_toEndOf="@+id/editTextNombre"
+                app:layout_constraintStart_toStartOf="@+id/editTextNombre"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
             <EditText
                 android:id="@+id/editTextCorreo"
@@ -61,27 +74,19 @@
                 app:layout_constraintStart_toStartOf="@+id/editTextTelefono"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTelefono" />
 
-            <EditText
-                android:id="@+id/editTextFechaCreacion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Fecha de creación"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="@+id/editTextCorreo"
-                app:layout_constraintStart_toStartOf="@+id/editTextCorreo"
-                app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
 
-            <EditText
+
+            <Spinner
                 android:id="@+id/editTextEstado"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="Estado"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="@+id/editTextFechaCreacion"
-                app:layout_constraintStart_toStartOf="@+id/editTextFechaCreacion"
-                app:layout_constraintTop_toBottomOf="@+id/editTextFechaCreacion" />
+
+                android:prompt="@string/estado_prompt"
+
+                app:layout_constraintEnd_toEndOf="@+id/editTextCorreo"
+                app:layout_constraintStart_toStartOf="@+id/editTextCorreo"
+                app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
 
             <EditText
                 android:id="@+id/editTextMunicipio"
@@ -164,7 +169,9 @@
                 android:id="@+id/btnEditar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Editar"
+                android:text="CONFIRMAR REGISTRO"
+                android:textSize="20dp"
+                android:backgroundTint="@color/light_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/editTextCoordenadaY"
                 app:layout_constraintStart_toStartOf="@+id/editTextCoordenadaY"
@@ -176,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Editar Cliente"
+                android:text="                                 "
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
